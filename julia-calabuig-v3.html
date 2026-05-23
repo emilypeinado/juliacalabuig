@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julia Calabuig</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   JULIA CALABUIG · v3 — contenido real
+   ================================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream:      #F5F2EE;
+  --cream-mid:  #EDE9E2;
+  --cream-dark: #E2DDD6;
+  --ink:        #191714;
+  --ink-60:     #4A4845;
+  --ink-30:     #8A8784;
+  --ink-10:     rgba(26,25,22,0.08);
+  --accent:     #B8935A;
+  --white:      #FFFFFF;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'Inter', system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+/* ---- UTILIDADES ---- */
+.overline { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-30); display: block; }
+.serif-display { font-family: var(--serif); font-weight: 300; line-height: 1.08; }
+.serif-display em { font-style: italic; color: var(--ink-60); }
+
+.btn-dark {
+  display: inline-block; font-size: 10px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--white); background: var(--ink);
+  padding: 13px 28px; text-decoration: none; transition: opacity .2s;
+}
+.btn-dark:hover { opacity: .72; }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ink-60); text-decoration: none; transition: color .2s;
+}
+.btn-ghost::after { content: '→'; font-size: 13px; transition: transform .2s; }
+.btn-ghost:hover { color: var(--ink); }
+.btn-ghost:hover::after { transform: translateX(3px); }
+
+/* ================================================================
+   NAV
+   ================================================================ */
+nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 52px; height: 62px;
+  background: rgba(245,242,238,.94); backdrop-filter: blur(10px);
+  border-bottom: 0.5px solid var(--ink-10);
+}
+.nav-logo { font-family: var(--serif); font-size: 17px; font-weight: 400; letter-spacing: .07em; color: var(--ink); text-decoration: none; }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-60); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; transition: opacity .2s; }
+.nav-cta:hover { opacity: .5; }
+
+/* ================================================================
+   PÁGINA 1 · PRINCIPAL
+   ================================================================ */
+
+/* HERO */
+.hero { min-height: 100vh; display: grid; grid-template-columns: 55% 45%; padding-top: 62px; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px 80px 52px; background: var(--cream); }
+.hero-left .overline { margin-bottom: 28px; }
+.hero-h1 { font-size: clamp(50px, 5.2vw, 76px); margin-bottom: 32px; }
+.hero-body { font-size: 14px; font-weight: 300; color: var(--ink-60); line-height: 1.85; max-width: 380px; margin-bottom: 20px; }
+.hero-quote {
+  font-family: var(--serif); font-size: 16px; font-style: italic;
+  font-weight: 300; color: var(--ink-60); line-height: 1.6;
+  border-left: 2px solid var(--accent); padding-left: 18px;
+  margin-bottom: 44px; max-width: 360px;
+}
+.hero-actions { display: flex; align-items: center; gap: 28px; }
+.hero-right { position: relative; background: var(--cream-dark); overflow: hidden; }
+.cover-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.photo-placeholder {
+  width: 100%; height: 100%; min-height: 560px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; color: var(--ink-30); font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+}
+
+/* BANDA AUTORIDAD */
+.authority-band {
+  background: var(--ink); padding: 26px 52px;
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+}
+.authority-bar { width: 28px; height: 1px; background: var(--accent); flex-shrink: 0; }
+.authority-text {
+  font-family: var(--serif); font-size: clamp(14px, 1.6vw, 19px);
+  font-weight: 300; font-style: italic; color: var(--cream); text-align: center; letter-spacing: .03em;
+}
+
+/* POSICIONAMIENTO */
+.positioning { display: grid; grid-template-columns: 1fr 1fr; min-height: 72vh; background: var(--cream-mid); }
+.positioning-left { padding: 80px 60px 80px 52px; display: flex; flex-direction: column; justify-content: center; border-right: 0.5px solid var(--ink-10); }
+.positioning-left .overline { margin-bottom: 22px; }
+.positioning-h2 { font-size: clamp(34px, 3.2vw, 52px); margin-bottom: 28px; }
+.positioning-body { font-size: 14px; font-weight: 300; color: var(--ink-60); line-height: 1.9; max-width: 420px; margin-bottom: 14px; }
+.positioning-pullquote {
+  margin-top: 24px;
+  font-family: var(--serif); font-size: 17px; font-style: italic;
+  font-weight: 300; color: var(--ink); line-height: 1.55;
+  border-left: 2px solid var(--accent); padding-left: 18px;
+}
+.positioning-right { padding: 80px 52px 80px 60px; display: flex; flex-direction: column; justify-content: center; }
+.positioning-right .overline { margin-bottom: 32px; }
+.value-item { padding: 26px 0; border-bottom: 0.5px solid var(--ink-10); display: grid; grid-template-columns: 32px 1fr; gap: 20px; align-items: start; }
+.value-item:first-of-type { border-top: 0.5px solid var(--ink-10); }
+.value-num { font-size: 10px; letter-spacing: .12em; color: var(--ink-30); padding-top: 3px; }
+.value-title { font-family: var(--serif); font-size: 21px; font-weight: 300; color: var(--ink); margin-bottom: 5px; line-height: 1.2; }
+.value-desc { font-size: 12px; font-weight: 300; color: var(--ink-60); line-height: 1.75; }
+
+/* ENFOQUE */
+.approach { padding: 100px 52px; background: var(--cream); }
+.approach-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 64px; }
+.approach-header .overline { margin-bottom: 14px; }
+.approach-h2 { font-size: clamp(34px, 3vw, 50px); }
+.approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 0.5px solid var(--ink-10); }
+.approach-card { padding: 44px 36px 44px 0; border-right: 0.5px solid var(--ink-10); transition: background .2s; }
+.approach-card:last-child { border-right: none; padding-right: 0; }
+.approach-card:nth-child(n+2) { padding-left: 36px; }
+.approach-card:hover { background: rgba(26,25,22,.02); }
+.approach-num { font-size: 10px; letter-spacing: .15em; color: var(--accent); margin-bottom: 20px; display: block; }
+.approach-title { font-family: var(--serif); font-size: 25px; font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 13px; }
+.approach-desc { font-size: 12px; font-weight: 300; color: var(--ink-60); line-height: 1.8; margin-bottom: 22px; }
+.approach-arrow { font-size: 16px; color: var(--ink-30); display: inline-block; transition: transform .2s; }
+.approach-card:hover .approach-arrow { transform: translateX(4px); color: var(--ink); }
+
+/* ================================================================
+   PÁGINA 2 · SOBRE JULIA
+   ================================================================ */
+
+/* HISTORIA */
+.about-hero { display: grid; grid-template-columns: 45% 55%; min-height: 90vh; background: var(--cream-dark); }
+.about-photo-wrap { position: relative; overflow: hidden; background: #D5D0C8; }
+.about-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px 80px 60px; }
+.about-content .overline { margin-bottom: 24px; }
+.about-h2 { font-size: clamp(34px, 3.2vw, 52px); margin-bottom: 36px; }
+.about-p { font-size: 14px; font-weight: 300; color: var(--ink-60); line-height: 1.9; margin-bottom: 14px; }
+.about-highlight {
+  margin: 24px 0;
+  font-family: var(--serif); font-size: 18px; font-style: italic;
+  font-weight: 300; color: var(--ink); line-height: 1.6;
+  border-left: 2px solid var(--accent); padding-left: 20px;
+}
+.about-cta { margin-top: 36px; display: flex; gap: 24px; align-items: center; }
+
+/* TRAYECTORIA */
+.timeline { padding: 100px 52px; background: var(--cream); }
+.timeline-header { margin-bottom: 60px; }
+.timeline-header .overline { margin-bottom: 14px; }
+.timeline-track { display: grid; gap: 0; max-width: 760px; }
+.timeline-item { display: grid; grid-template-columns: 110px 1px 1fr; gap: 0 28px; padding: 32px 0; border-bottom: 0.5px solid var(--ink-10); align-items: start; }
+.timeline-item:first-child { padding-top: 0; }
+.timeline-year { font-family: var(--serif); font-size: 17px; font-weight: 300; color: var(--ink-30); padding-top: 3px; text-align: right; }
+.timeline-dot-col { display: flex; flex-direction: column; align-items: center; padding-top: 8px; }
+.timeline-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.timeline-line { width: 1px; flex: 1; background: var(--ink-10); min-height: 40px; margin-top: 4px; }
+.timeline-item:last-child .timeline-line { display: none; }
+.timeline-role { font-family: var(--serif); font-size: 20px; font-weight: 300; color: var(--ink); margin-bottom: 4px; }
+.timeline-org { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 8px; }
+.timeline-desc { font-size: 13px; font-weight: 300; color: var(--ink-60); line-height: 1.75; }
+
+/* DIFERENCIAL */
+.differential { background: var(--ink); padding: 100px 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.diff-left .overline { color: rgba(245,242,238,.3); margin-bottom: 24px; }
+.diff-h2 { font-size: clamp(34px, 3.2vw, 52px); color: var(--cream); margin-bottom: 28px; }
+.diff-body { font-size: 14px; font-weight: 300; color: rgba(245,242,238,.55); line-height: 1.9; margin-bottom: 14px; }
+.diff-pullquote {
+  font-family: var(--serif); font-size: 19px; font-style: italic;
+  font-weight: 300; color: var(--accent); line-height: 1.55;
+  margin: 28px 0 36px;
+}
+.diff-right { display: flex; flex-direction: column; }
+.diff-item { padding: 26px 0; border-bottom: 0.5px solid rgba(245,242,238,.1); display: flex; gap: 20px; align-items: flex-start; }
+.diff-item:first-child { border-top: 0.5px solid rgba(245,242,238,.1); }
+.diff-icon { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 7px; flex-shrink: 0; }
+.diff-item-title { font-family: var(--serif); font-size: 20px; font-weight: 300; color: var(--cream); margin-bottom: 4px; }
+.diff-item-desc { font-size: 12px; font-weight: 300; color: rgba(245,242,238,.42); line-height: 1.75; }
+
+/* ================================================================
+   PÁGINA 3 · PROYECTOS & FORMACIÓN
+   ================================================================ */
+
+/* VIDEO SECTION */
+.video-section { padding: 100px 52px; background: var(--cream-mid); }
+.video-section-header { margin-bottom: 56px; }
+.video-section-header .overline { margin-bottom: 14px; }
+.video-section-header h2 { font-size: clamp(32px, 3vw, 50px); }
+
+.video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.video-card {}
+.video-wrap {
+  position: relative; background: var(--ink); overflow: hidden;
+  aspect-ratio: 9/16; margin-bottom: 20px;
+  max-height: 520px;
+}
+.video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-play-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(25,23,20,.3);
+  cursor: pointer; transition: background .2s;
+}
+.video-play-overlay:hover { background: rgba(25,23,20,.15); }
+.play-btn {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(245,242,238,.9);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .2s;
+}
+.video-play-overlay:hover .play-btn { transform: scale(1.08); }
+.play-btn svg { margin-left: 3px; }
+.video-tag { font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; display: block; }
+.video-title { font-family: var(--serif); font-size: 24px; font-weight: 300; color: var(--ink); margin-bottom: 8px; }
+.video-desc { font-size: 13px; font-weight: 300; color: var(--ink-60); line-height: 1.75; }
+
+/* PROYECTOS */
+.projects { padding: 100px 52px; background: var(--cream); }
+.projects-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 60px; }
+.projects-header .overline { margin-bottom: 14px; }
+.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.proj-card {}
+.proj-img-wrap { aspect-ratio: 4/5; background: var(--cream-dark); overflow: hidden; margin-bottom: 18px; }
+.proj-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s ease; display: block; }
+.proj-card:hover .proj-img-wrap img { transform: scale(1.04); }
+.proj-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-30); }
+.proj-tag { font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 7px; display: block; }
+.proj-title { font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--ink); margin-bottom: 6px; }
+.proj-desc { font-size: 12px; font-weight: 300; color: var(--ink-60); line-height: 1.7; }
+
+/* FORMACIÓN */
+.formation { background: var(--cream-mid); padding: 100px 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.formation-left .overline { margin-bottom: 24px; }
+.formation-h2 { font-size: clamp(32px, 3vw, 50px); margin-bottom: 28px; }
+.formation-body { font-size: 14px; font-weight: 300; color: var(--ink-60); line-height: 1.9; margin-bottom: 14px; }
+.formation-pullquote {
+  font-family: var(--serif); font-size: 17px; font-style: italic;
+  font-weight: 300; color: var(--ink); line-height: 1.6;
+  border-left: 2px solid var(--accent); padding-left: 18px;
+  margin: 24px 0;
+}
+.formation-cta { margin-top: 32px; }
+.formation-right { padding-top: 48px; }
+.program-item { padding: 28px 0; border-bottom: 0.5px solid var(--ink-10); }
+.program-item:first-child { border-top: 0.5px solid var(--ink-10); }
+.program-overline { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; display: block; }
+.program-title { font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--ink); margin-bottom: 6px; }
+.program-desc { font-size: 12px; font-weight: 300; color: var(--ink-60); line-height: 1.75; margin-bottom: 14px; }
+.program-link { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-30); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; transition: color .2s; }
+.program-link:hover { color: var(--ink); }
+
+/* CLIENTE IDEAL */
+.client-section { background: var(--ink); padding: 100px 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.client-left .overline { color: rgba(245,242,238,.3); margin-bottom: 22px; }
+.client-h2 { font-size: clamp(32px, 3vw, 50px); color: var(--cream); margin-bottom: 28px; }
+.client-body { font-size: 14px; font-weight: 300; color: rgba(245,242,238,.55); line-height: 1.9; margin-bottom: 14px; }
+.client-right { display: flex; flex-direction: column; gap: 0; }
+.client-item { padding: 24px 0; border-bottom: 0.5px solid rgba(245,242,238,.1); display: flex; gap: 18px; align-items: flex-start; }
+.client-item:first-child { border-top: 0.5px solid rgba(245,242,238,.1); }
+.client-check { color: var(--accent); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.client-text { font-size: 13px; font-weight: 300; color: rgba(245,242,238,.65); line-height: 1.7; }
+.client-text strong { font-weight: 400; color: var(--cream); font-family: var(--serif); font-size: 16px; display: block; margin-bottom: 3px; }
+
+/* CTA FINAL */
+.cta-final { background: var(--cream); padding: 120px 52px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.cta-final .overline { margin-bottom: 28px; }
+.cta-h2 { font-size: clamp(40px, 5vw, 72px); color: var(--ink); margin-bottom: 18px; max-width: 680px; }
+.cta-sub { font-size: 14px; font-weight: 300; color: var(--ink-60); margin-bottom: 52px; max-width: 480px; line-height: 1.8; }
+.btn-dark-lg { display: inline-block; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--white); background: var(--ink); padding: 16px 44px; text-decoration: none; transition: opacity .2s; }
+.btn-dark-lg:hover { opacity: .75; }
+
+/* FOOTER */
+footer { background: var(--ink); border-top: 0.5px solid rgba(245,242,238,.08); padding: 30px 52px; display: flex; align-items: center; justify-content: space-between; }
+.footer-logo { font-family: var(--serif); font-size: 15px; font-weight: 300; letter-spacing: .06em; color: var(--cream); }
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(245,242,238,.3); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--cream); }
+.footer-copy { font-size: 10px; color: rgba(245,242,238,.2); }
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 960px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { min-height: 70vw; }
+  .hero-left { padding: 60px 24px; }
+  .authority-band { padding: 24px; }
+  .positioning { grid-template-columns: 1fr; }
+  .positioning-left { border-right: none; border-bottom: 0.5px solid var(--ink-10); padding: 60px 24px; }
+  .positioning-right { padding: 60px 24px; }
+  .approach { padding: 60px 24px; }
+  .approach-grid { grid-template-columns: 1fr; }
+  .approach-card { border-right: none !important; border-bottom: 0.5px solid var(--ink-10); padding: 36px 0 !important; }
+  .approach-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .about-hero { grid-template-columns: 1fr; }
+  .about-photo-wrap { min-height: 70vw; }
+  .about-content { padding: 60px 24px; }
+  .timeline { padding: 60px 24px; }
+  .timeline-item { grid-template-columns: 80px 1px 1fr; gap: 0 16px; }
+  .differential { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
+  .video-section { padding: 60px 24px; }
+  .video-grid { grid-template-columns: 1fr; }
+  .projects { padding: 60px 24px; }
+  .projects-grid { grid-template-columns: 1fr; gap: 20px; }
+  .projects-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .formation { grid-template-columns: 1fr; gap: 0; padding: 60px 24px; }
+  .formation-right { padding-top: 48px; }
+  .client-section { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
+  .cta-final { padding: 80px 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="nav-logo">Julia Calabuig</a>
+  <ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#julia">Sobre Julia</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Hablemos</a>
+</nav>
+
+
+<!-- ================================================================
+     PÁGINA 1 · PRINCIPAL
+     ================================================================ -->
+
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <span class="overline">Consultora · Estrategia · Liderazgo</span>
+    <h1 class="serif-display hero-h1">
+      Activo proyectos<br>con propósito<br>
+      <em>usando el lenguaje<br>del deporte.</em>
+    </h1>
+    <p class="hero-body">
+      Más de veinte años en entornos de máxima exigencia —MotoGP, fútbol profesional,
+      proyectos de impacto social— me han dado algo que los másteres no enseñan:
+      estructura real para que las cosas pasen.
+    </p>
+    <blockquote class="hero-quote">
+      "Mucha gente usa el deporte como metáfora.<br>Yo lo uso como campo de entrenamiento real."
+    </blockquote>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-dark">Hablemos</a>
+      <a href="#proyectos" class="btn-ghost">Ver proyectos</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- EDITAR: reemplaza por <img class="cover-img" src="foto-julia.jpg" alt="Julia Calabuig"> -->
+    <div class="photo-placeholder">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="12" r="6" stroke="#8A8784" stroke-width="1"/>
+        <path d="M4 34c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#8A8784" stroke-width="1"/>
+      </svg>
+      <span>Foto de Julia</span>
+    </div>
+  </div>
+</section>
+
+<!-- BANDA AUTORIDAD -->
+<div class="authority-band">
+  <div class="authority-bar"></div>
+  <p class="authority-text">
+    La única mujer en el mundo en liderar desde cero la carrera de un piloto hasta llevarlo al mejor equipo de MotoGP
+  </p>
+  <div class="authority-bar"></div>
+</div>
+
+<!-- POSICIONAMIENTO -->
+<section class="positioning">
+  <div class="positioning-left">
+    <span class="overline">Por qué es diferente</span>
+    <h2 class="serif-display positioning-h2">
+      El deporte moviliza<br>
+      <em>lo que la estrategia<br>sola no puede.</em>
+    </h2>
+    <p class="positioning-body">
+      El deporte aporta algo que pocas disciplinas tienen: la capacidad de movilizar
+      emocionalmente a las personas y convertir valores abstractos en comportamiento real.
+    </p>
+    <p class="positioning-body">
+      Mi ventaja no está solo en entender eso, sino en haberlo vivido desde dentro,
+      en entornos donde el resultado no es teórico: o sucede o no sucede.
+    </p>
+    <p class="positioning-body">
+      Eso implica tomar decisiones bajo presión, generar confianza en contextos
+      altamente competitivos y sostener procesos a largo plazo donde la disciplina
+      y el foco no son opcionales.
+    </p>
+    <p class="positioning-pullquote">
+      "Cuando llevo esto a proyectos no deportivos, aporto estructura real para que
+      las cosas pasen: convertir ideas en acción, alinear personas alrededor de un
+      objetivo y sostener el compromiso en el tiempo."
+    </p>
+  </div>
+  <div class="positioning-right">
+    <span class="overline">Áreas de trabajo</span>
+    <div class="value-item">
+      <span class="value-num">01</span>
+      <div>
+        <p class="value-title">Proyectos con impacto</p>
+        <p class="value-desc">Diseño e impulso iniciativas en deporte, cultura y desarrollo social que generan valor económico y posicionamiento real. Proyectos donde el impacto no es un eslogan sino el resultado.</p>
+      </div>
+    </div>
+    <div class="value-item">
+      <span class="value-num">02</span>
+      <div>
+        <p class="value-title">Estrategia y posicionamiento</p>
+        <p class="value-desc">Acompaño a marcas, instituciones y profesionales a estructurar ideas, definir dirección y ejecutar con criterio. De la visión al resultado.</p>
+      </div>
+    </div>
+    <div class="value-item">
+      <span class="value-num">03</span>
+      <div>
+        <p class="value-title">Formación en liderazgo</p>
+        <p class="value-desc">Programas basados en experiencia real con deportistas de alto nivel. No motivación de manual, sino competencia aplicada: disciplina, toma de decisiones bajo presión, gestión del éxito y el fracaso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENFOQUE DE TRABAJO -->
+<section class="approach">
+  <div class="approach-header">
+    <div>
+      <span class="overline">Cómo trabajo</span>
+      <h2 class="serif-display approach-h2">Enfoque de trabajo</h2>
+    </div>
+    <a href="#contacto" class="btn-ghost">Hablar de tu proyecto</a>
+  </div>
+  <div class="approach-grid">
+    <div class="approach-card">
+      <span class="approach-num">01</span>
+      <h3 class="approach-title">Movilizar<br>personas</h3>
+      <p class="approach-desc">
+        Quiero trabajar con instituciones, empresas y proyectos que entienden que el
+        impacto real no se consigue solo con estrategia, sino movilizando personas.
+        Proyectos donde la cultura, el deporte o la formación son palancas de cambio.
+      </p>
+      <span class="approach-arrow">→</span>
+    </div>
+    <div class="approach-card">
+      <span class="approach-num">02</span>
+      <h3 class="approach-title">Convertir ideas<br>en acción</h3>
+      <p class="approach-desc">
+        No trabajo para diseñar planes. Trabajo para que las cosas ocurran.
+        Estructuro, lanzo y sostengo proyectos desde el concepto hasta el resultado,
+        con foco, disciplina y capacidad de adaptación real.
+      </p>
+      <span class="approach-arrow">→</span>
+    </div>
+    <div class="approach-card">
+      <span class="approach-num">03</span>
+      <h3 class="approach-title">Ambición<br>y visión larga</h3>
+      <p class="approach-desc">
+        No trabajo con proyectos sin propósito claro ni con quienes buscan solo
+        una acción puntual. El compromiso y la disciplina a largo plazo no son
+        opcionales. Son el método.
+      </p>
+      <span class="approach-arrow">→</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     PÁGINA 2 · SOBRE JULIA
+     ================================================================ -->
+
+<section class="about-hero" id="julia">
+  <div class="about-photo-wrap">
+    <!-- EDITAR: <img class="cover-img" src="foto-julia-2.jpg" alt="Julia Calabuig"> -->
+    <div class="photo-placeholder">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="12" r="6" stroke="#8A8784" stroke-width="1"/>
+        <path d="M4 34c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#8A8784" stroke-width="1"/>
+      </svg>
+      <span>Segunda foto</span>
+    </div>
+  </div>
+  <div class="about-content">
+    <span class="overline">Historia profesional</span>
+    <h2 class="serif-display about-h2">
+      Entornos donde<br>
+      <em>el resultado es real<br>
+      y la exigencia máxima.</em>
+    </h2>
+    <p class="about-p">
+      Soy consultora en desarrollo e implementación de proyectos con más de veinte
+      años de experiencia en entornos de alta exigencia.
+    </p>
+    <p class="about-p">
+      He trabajado construyendo carreras desde cero y acompañando a deportistas en
+      momentos donde el resultado no es teórico. Eso implica generar confianza en
+      contextos altamente competitivos y sostener procesos a largo plazo donde la
+      disciplina y el foco no son opcionales.
+    </p>
+    <blockquote class="about-highlight">
+      "He sido la única mujer en el mundo en liderar desde cero la carrera de un
+      piloto desde los 11 años, acompañándole hasta llevarlo al mejor equipo del
+      mundo en su categoría."
+    </blockquote>
+    <p class="about-p">
+      También he trabajado en la reconstrucción de la carrera de un campeón del
+      mundo, en un momento donde ya no se trataba de crecer, sino de redefinir,
+      reposicionar y volver a competir desde otro lugar.
+    </p>
+    <div class="about-cta">
+      <a href="#contacto" class="btn-dark">Hablemos</a>
+      <a href="#proyectos" class="btn-ghost">Ver proyectos</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRAYECTORIA -->
+<section class="timeline">
+  <div class="timeline-header">
+    <span class="overline">Trayectoria</span>
+    <h2 class="serif-display" style="font-size:clamp(32px,3vw,48px)">Recorrido profesional</h2>
+  </div>
+  <div class="timeline-track">
+
+    <div class="timeline-item">
+      <span class="timeline-year">2025 →</span>
+      <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div>
+        <p class="timeline-role">Coautora — El arte de empezar de nuevo</p>
+        <p class="timeline-org">Publicación · Junto a la Dra. María Pérez</p>
+        <p class="timeline-desc">Cada final trae consigo el poder de un nuevo comienzo. De reciente lanzamiento.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <span class="timeline-year">2025 →</span>
+      <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div>
+        <p class="timeline-role">Genius DV7 School</p>
+        <p class="timeline-org">Genius World · Valencia · En curso</p>
+        <p class="timeline-desc">Desarrollo e implementación de un proyecto que fusiona la filosofía Genius World en las escuelas de fútbol de David Villa a nivel mundial.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <span class="timeline-year">2025 →</span>
+      <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div>
+        <p class="timeline-role">Documental — El fútbol moderno</p>
+        <p class="timeline-org">Producción · Valencia · En producción</p>
+        <p class="timeline-desc">Producción documental sobre la situación actual del fútbol en Europa.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <span class="timeline-year">2024 →</span>
+      <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div>
+        <p class="timeline-role">Liderazgo y Salud — Programa formativo</p>
+        <p class="timeline-org">Barcelona · Formación corporativa</p>
+        <p class="timeline-desc">Autora del programa impartido junto a la Dra. María Pérez en varias ciudades de España. Enfocado en competencia, responsabilidad y propósito.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <span class="timeline-year">2023 →</span>
+      <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div>
+        <p class="timeline-role">Fundadora — Audaç Women</p>
+        <p class="timeline-org">Valencia · Plataforma de emprendimiento</p>
+        <p class="timeline-desc">Proyecto para activar y poner en marcha marcas y productos creados por mujeres.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <span class="timeline-year">+20 años</span>
+      <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div>
+        <p class="timeline-role">Mánager de pilotos — Campeonato del Mundo MotoGP</p>
+        <p class="timeline-org">Primera mujer en España · Internacional</p>
+        <p class="timeline-desc">Pionera en la gestión de pilotos de élite. Construyó desde cero la carrera de un piloto desde los 11 años hasta llevarlo al mejor equipo del mundo. También acompañó la reconstrucción de la carrera de un campeón del mundo.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <span class="timeline-year">+20 años</span>
+      <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div>
+        <p class="timeline-role">Marketing deportivo — Fútbol profesional</p>
+        <p class="timeline-org">Clubes de primera división · Internacional</p>
+        <p class="timeline-desc">Gestión de patrocinios, estrategias de comunicación y desarrollo de negocio con clubes de primer nivel e instituciones internacionales.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIFERENCIAL -->
+<section class="differential">
+  <div class="diff-left">
+    <span class="overline">Enfoque personal</span>
+    <h2 class="serif-display diff-h2">
+      No uso el deporte<br>
+      <em>como metáfora.</em>
+    </h2>
+    <p class="diff-body">
+      Lo uso como campo de entrenamiento real. He vivido desde dentro lo que
+      significa construir resultados cuando el margen de error es mínimo y
+      la presión es máxima.
+    </p>
+    <p class="diff-body">
+      En mis formaciones de liderazgo utilizo ejemplos vividos junto a deportistas
+      de alto nivel para trasladar cómo se construyen el compromiso, la disciplina,
+      la toma de decisiones bajo presión y la gestión del éxito y del fracaso.
+    </p>
+    <p class="diff-pullquote">
+      "Mi ventaja es haber trabajado en entornos donde el resultado es real
+      y la exigencia es máxima. Eso me permite llevar a otros proyectos no
+      solo inspiración, sino estructura, foco y capacidad de ejecución."
+    </p>
+    <a href="#contacto" class="btn-dark">Trabajemos juntos</a>
+  </div>
+  <div class="diff-right">
+    <div class="diff-item">
+      <div class="diff-icon"></div>
+      <div>
+        <p class="diff-item-title">Visión estratégica</p>
+        <p class="diff-item-desc">Ver el conjunto, detectar oportunidades y convertir ideas complejas en proyectos viables.</p>
+      </div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-icon"></div>
+      <div>
+        <p class="diff-item-title">Ejecución real</p>
+        <p class="diff-item-desc">No solo idear, sino bajar a tierra, estructurar, lanzar y hacer que las cosas ocurran.</p>
+      </div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-icon"></div>
+      <div>
+        <p class="diff-item-title">Decisión bajo presión</p>
+        <p class="diff-item-desc">Capacidad construida en entornos de alta exigencia donde los errores tienen consecuencias reales.</p>
+      </div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-icon"></div>
+      <div>
+        <p class="diff-item-title">Gestión de alianzas</p>
+        <p class="diff-item-desc">Conectar talento, marcas, instituciones y personas para crear proyectos con impacto real.</p>
+      </div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-icon"></div>
+      <div>
+        <p class="diff-item-title">Adaptación al cambio</p>
+        <p class="diff-item-desc">El deporte enseña que los planes cambian. Lo que no puede cambiar es la capacidad de respuesta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     PÁGINA 3 · PROYECTOS & FORMACIÓN
+     ================================================================ -->
+
+<!-- VÍDEOS DE PROYECTOS -->
+<section class="video-section" id="proyectos">
+  <div class="video-section-header">
+    <span class="overline">Proyectos en movimiento</span>
+    <h2 class="serif-display" style="font-size:clamp(32px,3vw,50px)">
+      Dos proyectos,<br><em>un mismo propósito.</em>
+    </h2>
+  </div>
+  <div class="video-grid">
+
+    <!-- VIDEO 1: Audaç Women -->
+    <div class="video-card">
+      <div class="video-wrap">
+        <!--
+          INSTRUCCIÓN: para que este vídeo funcione localmente,
+          el archivo audac-women.mp4 debe estar en la misma carpeta que este HTML.
+          Si subes a web, actualiza la ruta src="ruta/a/audac-women.mp4"
+        -->
+        <video id="vid1" preload="metadata" playsinline>
+          <source src="audac-women.mp4" type="video/mp4">
+        </video>
+        <div class="video-play-overlay" onclick="toggleVideo('vid1', this)">
+          <div class="play-btn">
+            <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+              <path d="M1 1l14 8L1 17V1z" fill="#191714"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <span class="video-tag">Emprendimiento · Mujer</span>
+      <h3 class="video-title">Audaç Women</h3>
+      <p class="video-desc">
+        Un proyecto para activar y poner en marcha marcas y productos creados por mujeres.
+        Porque cuando las mujeres se unen, tejen oportunidades con la fibra de sus sueños.
+      </p>
+    </div>
+
+    <!-- VIDEO 2: Documental fútbol -->
+    <div class="video-card">
+      <div class="video-wrap" style="aspect-ratio: 16/9; max-height: 340px;">
+        <!--
+          INSTRUCCIÓN: el archivo documental-futbol.mp4 debe estar en la misma carpeta.
+        -->
+        <video id="vid2" preload="metadata" playsinline>
+          <source src="documental-futbol.mp4" type="video/mp4">
+        </video>
+        <div class="video-play-overlay" onclick="toggleVideo('vid2', this)">
+          <div class="play-btn">
+            <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+              <path d="M1 1l14 8L1 17V1z" fill="#191714"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <span class="video-tag">Documental · Fútbol · En producción</span>
+      <h3 class="video-title">El fútbol moderno</h3>
+      <p class="video-desc">
+        Una mirada a la situación actual del fútbol en Europa. El deporte como
+        herramienta de impacto social, cultural y económico real.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROYECTOS LISTADOS -->
+<section class="projects">
+  <div class="projects-header">
+    <div>
+      <span class="overline">Trabajo desarrollado</span>
+      <h2 class="serif-display" style="font-size:clamp(30px,2.8vw,48px)">Proyectos</h2>
+    </div>
+    <a href="#contacto" class="btn-ghost">Hablar de un proyecto</a>
+  </div>
+  <div class="projects-grid">
+
+    <div class="proj-card">
+      <div class="proj-img-wrap">
+        <!-- EDITAR: <img src="genius-dv7.jpg" alt="Genius DV7"> -->
+        <div class="proj-img-placeholder">Imagen proyecto</div>
+      </div>
+      <span class="proj-tag">Deporte · Educación · Internacional</span>
+      <h3 class="proj-title">Genius DV7 School</h3>
+      <p class="proj-desc">Fusión de la filosofía Genius World en las escuelas de fútbol de David Villa a nivel mundial. Deporte como herramienta de desarrollo integral.</p>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-img-wrap">
+        <!-- EDITAR: <img src="libro.jpg" alt="El arte de empezar de nuevo"> -->
+        <div class="proj-img-placeholder">Portada del libro</div>
+      </div>
+      <span class="proj-tag">Publicación · 2025</span>
+      <h3 class="proj-title">El arte de empezar de nuevo</h3>
+      <p class="proj-desc">Coautora junto a la Dra. María Pérez. Cada final trae consigo el poder de un nuevo comienzo. Disponible en librerías.</p>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-img-wrap">
+        <!-- EDITAR: <img src="motogp.jpg" alt="MotoGP"> -->
+        <div class="proj-img-placeholder">Imagen archivo</div>
+      </div>
+      <span class="proj-tag">MotoGP · Gestión deportiva</span>
+      <h3 class="proj-title">Gestión de carrera — MotoGP</h3>
+      <p class="proj-desc">Construcción desde cero de la carrera de un piloto desde los 11 años hasta llevarlo al mejor equipo del mundo. La única mujer en el mundo en liderar este proceso.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FORMACIÓN -->
+<section class="formation">
+  <div class="formation-left">
+    <span class="overline">Formación y conferencias</span>
+    <h2 class="serif-display formation-h2">
+      Programas que<br>
+      <em>construyen<br>
+      competencia real.</em>
+    </h2>
+    <p class="formation-body">
+      Mis programas no se centran en la motivación, sino en la competencia.
+      Se trata de saber más, para hacerlo mejor.
+    </p>
+    <p class="formation-body">
+      Trabajo con profesionales, empresas y organizaciones que buscan
+      mejorar su capacidad de acción, su claridad y sus resultados. Y utilizo
+      ejemplos vividos junto a deportistas de alto nivel para trasladar cómo
+      se construyen el compromiso, la disciplina y la gestión del éxito y el fracaso.
+    </p>
+    <blockquote class="formation-pullquote">
+      "Aplicando la mentalidad deportiva —disciplina, foco, construcción de objetivos—
+      hemos conseguido transformar momentos de crisis en nuevas etapas profesionales
+      con dirección y sentido."
+    </blockquote>
+    <div class="formation-cta">
+      <a href="#contacto" class="btn-dark">Solicitar información</a>
+    </div>
+  </div>
+  <div class="formation-right">
+
+    <div class="program-item">
+      <span class="program-overline">Formación · Activo</span>
+      <h3 class="program-title">Liderazgo y Salud</h3>
+      <p class="program-desc">
+        Programa desarrollado junto a la Dra. María Pérez. Diseñado para profesionales
+        que quieren recuperar propósito, claridad y capacidad de acción. Impartido en
+        varias ciudades de España.
+      </p>
+      <a href="#contacto" class="program-link">Más información</a>
+    </div>
+
+    <div class="program-item">
+      <span class="program-overline">Conferencias · Disponible</span>
+      <h3 class="program-title">Liderazgo desde el deporte de élite</h3>
+      <p class="program-desc">
+        Keynotes y conferencias para empresas e instituciones sobre toma de
+        decisiones bajo presión, construcción de equipos y mentalidad de
+        alto rendimiento aplicada al entorno profesional.
+      </p>
+      <a href="#contacto" class="program-link">Solicitar ponencia</a>
+    </div>
+
+    <div class="program-item">
+      <span class="program-overline">Consultoría · A medida</span>
+      <h3 class="program-title">Diseño e implementación de proyectos</h3>
+      <p class="program-desc">
+        Acompañamiento estratégico para organizaciones que quieren diseñar,
+        estructurar y lanzar proyectos con impacto real donde el deporte,
+        la cultura o la formación son palancas de cambio.
+      </p>
+      <a href="#contacto" class="program-link">Hablar del proyecto</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CON QUIÉN TRABAJA -->
+<section class="client-section">
+  <div class="client-left">
+    <span class="overline">Con quién trabajo</span>
+    <h2 class="serif-display client-h2">
+      Proyectos con<br>
+      <em>ambición y visión<br>a largo plazo.</em>
+    </h2>
+    <p class="client-body">
+      Quiero trabajar con instituciones, empresas y proyectos que entienden que
+      el impacto real no se consigue solo con estrategia, sino movilizando personas.
+    </p>
+    <p class="client-body">
+      No trabajo con proyectos sin propósito claro ni con quienes buscan solo una
+      acción puntual. Tampoco con entornos donde el deporte se usa solo como imagen,
+      sin un impacto real detrás.
+    </p>
+  </div>
+  <div class="client-right">
+    <div class="client-item">
+      <span class="client-check">✦</span>
+      <div class="client-text">
+        <strong>Instituciones y empresas con visión</strong>
+        Que entienden que movilizar personas es tan importante como la estrategia.
+      </div>
+    </div>
+    <div class="client-item">
+      <span class="client-check">✦</span>
+      <div class="client-text">
+        <strong>Proyectos donde el deporte es palanca</strong>
+        No como imagen sino como herramienta real de cultura, formación o desarrollo social.
+      </div>
+    </div>
+    <div class="client-item">
+      <span class="client-check">✦</span>
+      <div class="client-text">
+        <strong>Profesionales en momentos de transición</strong>
+        Quienes necesitan redefinir, reposicionar y volver a competir desde otro lugar.
+      </div>
+    </div>
+    <div class="client-item">
+      <span class="client-check">✦</span>
+      <div class="client-text">
+        <strong>Ambición y compromiso a largo plazo</strong>
+        La disciplina y el foco sostenido no son opcionales. Son el método.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="contacto">
+  <span class="overline">Trabajemos juntos</span>
+  <h2 class="serif-display cta-h2">
+    ¿Tienes un proyecto<br>
+    <em>que quieres que<br>ocurra de verdad?</em>
+  </h2>
+  <p class="cta-sub">
+    Trabajo con personas y organizaciones que quieren hacer que las cosas sucedan.
+    Si crees que podemos desarrollar algo juntos, estaré encantada de escucharte.
+  </p>
+  <!-- EDITAR: cambia el email -->
+  <a href="mailto:juliacalabuig8@gmail.com" class="btn-dark-lg">Escribirme</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Julia Calabuig</span>
+  <ul class="footer-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#julia">Sobre Julia</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <!-- EDITAR: pon el link real de LinkedIn -->
+    <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Julia Calabuig</span>
+</footer>
+
+<script>
+  function toggleVideo(id, overlay) {
+    const video = document.getElementById(id);
+    if (video.paused) {
+      // Pause all other videos
+      document.querySelectorAll('video').forEach(v => { if (v.id !== id) { v.pause(); v.closest('.video-wrap').querySelector('.video-play-overlay').style.display = 'flex'; } });
+      video.play();
+      overlay.style.display = 'none';
+    } else {
+      video.pause();
+      overlay.style.display = 'flex';
+    }
+  }
+  // Show overlay again when video ends
+  document.querySelectorAll('video').forEach(video => {
+    video.addEventListener('ended', function() {
+      this.closest('.video-wrap').querySelector('.video-play-overlay').style.display = 'flex';
+    });
+  });
+</script>
+
+</body>
+</html>
