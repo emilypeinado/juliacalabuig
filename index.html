@@ -65,13 +65,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(254,253,251,
 .hero-photo-badge{font-family:var(--sans);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:0.5px dashed var(--accent-lt);padding:.6rem 1.2rem;background:rgba(255,255,255,.5)}
 
 /* TICKER */
-.ticker-wrap{background:var(--ink);overflow:hidden;padding:.85rem 0;border-top:0.5px solid rgba(255,255,255,.08)}
-.ticker{display:flex;gap:0;white-space:nowrap;animation:tick 30s linear infinite}
-.ticker:hover{animation-play-state:paused}
-.ticker-item{font-family:var(--serif);font-size:1rem;font-weight:300;color:rgba(255,255,255,.55);padding:0 3rem;flex-shrink:0}
-.ticker-item strong{color:rgba(255,255,255,.85);font-weight:400}
-.ticker-sep{color:var(--accent-lt);padding:0 .5rem}
-@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* CARRUSEL DE HITOS */
+.carousel-wrap{background:var(--warm);border-top:0.5px solid var(--parch);border-bottom:0.5px solid var(--parch);padding:3rem 0 3rem;}
+.carousel-inner{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 2rem;}
+.carousel-inner::-webkit-scrollbar{display:none;}
+.carousel-card{flex:0 0 260px;scroll-snap-align:start;background:var(--ivory);padding:2rem 1.75rem;display:flex;flex-direction:column;transition:background .25s;}
+.carousel-card:hover{background:var(--stone);}
+.carousel-card-num{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--accent-lt);line-height:1;margin-bottom:.5rem;}
+.carousel-card-title{font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--ink);margin-bottom:.4rem;line-height:1.25;}
+.carousel-card-sub{font-family:var(--sans);font-size:.72rem;color:var(--muted);line-height:1.5;font-weight:300;}
+.carousel-hint{font-family:var(--sans);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right;padding:.75rem 2rem 0;opacity:.6;}
+
 
 /* STATEMENT BAND */
 .statement{padding:6rem 0;background:var(--warm);border-bottom:0.5px solid var(--parch)}
@@ -294,22 +298,54 @@ footer{background:var(--ink);padding:3rem 0}
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker">
-    <span class="ticker-item"><strong>25 años</strong> en marketing deportivo de élite<span class="ticker-sep">·</span></span>
-    <span class="ticker-item"><strong>Valencia CF</strong> — mejor main sponsor de su historia<span class="ticker-sep">·</span></span>
-    <span class="ticker-item"><strong>MotoGP</strong> — primera mujer mánager de pilotos<span class="ticker-sep">·</span></span>
-    <span class="ticker-item"><strong>Liderazgo y Salud</strong> — curso presencial en activo<span class="ticker-sep">·</span></span>
-    <span class="ticker-item"><strong>El arte de empezar de nuevo</strong> — libro publicado 2025<span class="ticker-sep">·</span></span>
-    <span class="ticker-item"><strong>Genius DV7</strong> — escuelas de fútbol de David Villa<span class="ticker-sep">·</span></span>
-    <span class="ticker-item"><strong>25 años</strong> en marketing deportivo de élite<span class="ticker-sep">·</span></span>
-    <span class="ticker-item"><strong>Valencia CF</strong> — mejor main sponsor de su historia<span class="ticker-sep">·</span></span>
-    <span class="ticker-item"><strong>MotoGP</strong> — primera mujer mánager de pilotos<span class="ticker-sep">·</span></span>
-    <span class="ticker-item"><strong>Liderazgo y Salud</strong> — curso presencial en activo<span class="ticker-sep">·</span></span>
-    <span class="ticker-item"><strong>El arte de empezar de nuevo</strong> — libro publicado 2025<span class="ticker-sep">·</span></span>
-    <span class="ticker-item"><strong>Genius DV7</strong> — escuelas de fútbol de David Villa<span class="ticker-sep">·</span></span>
+<!-- CARRUSEL DE HITOS -->
+<div class="carousel-wrap">
+  <div class="carousel-inner">
+
+    <div class="carousel-card">
+      <div class="carousel-card-num">25</div>
+      <div class="carousel-card-title">Años en marketing deportivo de élite</div>
+      <div class="carousel-card-sub">Fútbol profesional, MotoGP y consultoría estratégica</div>
+    </div>
+
+    <div class="carousel-card">
+      <div class="carousel-card-num">VCF</div>
+      <div class="carousel-card-title">Valencia CF — Main Sponsor</div>
+      <div class="carousel-card-sub">El mejor patrocinador principal en la historia del club</div>
+    </div>
+
+    <div class="carousel-card">
+      <div class="carousel-card-num">1ª</div>
+      <div class="carousel-card-title">Mujer mánager de pilotos en MotoGP</div>
+      <div class="carousel-card-sub">Desde las categorías inferiores hasta el mejor equipo del mundo</div>
+    </div>
+
+    <div class="carousel-card">
+      <div class="carousel-card-num">+</div>
+      <div class="carousel-card-title">Liderazgo y Salud</div>
+      <div class="carousel-card-sub">Curso presencial en activo · con la Dra. María Pérez</div>
+    </div>
+
+    <div class="carousel-card">
+      <div class="carousel-card-num">📖</div>
+      <div class="carousel-card-title">El arte de empezar de nuevo</div>
+      <div class="carousel-card-sub">Libro publicado en 2025 · coautora con la Dra. María Pérez</div>
+    </div>
+
+    <div class="carousel-card">
+      <div class="carousel-card-num">DV7</div>
+      <div class="carousel-card-title">Genius DV7 School</div>
+      <div class="carousel-card-sub">Escuelas de fútbol de David Villa · proyecto internacional</div>
+    </div>
+
+    <div class="carousel-card">
+      <div class="carousel-card-num">♀</div>
+      <div class="carousel-card-title">Audaç Women</div>
+      <div class="carousel-card-sub">Plataforma para marcas y productos creados por mujeres</div>
+    </div>
+
   </div>
+  <p class="carousel-hint">desliza para ver más →</p>
 </div>
 
 <!-- STATEMENT -->
