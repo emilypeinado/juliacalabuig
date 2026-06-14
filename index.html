@@ -84,12 +84,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(254,253,251,
 .statement-q em{font-style:italic;color:var(--accent)}
 .statement-byline{font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
-/* CREDENCIALES */
-.cred{padding:3rem 0;background:var(--ivory);border-bottom:0.5px solid var(--parch)}
-.cred-inner{max-width:var(--max);margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:3rem;flex-wrap:wrap;justify-content:center}
-.cred-label{font-family:var(--sans);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);flex-shrink:0}
-.cred-items{display:flex;gap:2.5rem;flex-wrap:wrap;align-items:center}
-.cred-item{font-family:var(--serif);font-size:.95rem;font-weight:400;color:var(--mid);white-space:nowrap}
+/* CIFRAS DE IMPACTO */
+.cifras{padding:4rem 2rem;background:var(--ivory);border-top:0.5px solid var(--parch);border-bottom:0.5px solid var(--parch)}
+.cifras-grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.cifra-item{text-align:center;padding:2rem 1rem;border-right:0.5px solid var(--parch);opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.cifra-item:last-child{border-right:none}
+.cifra-item.visible{opacity:1;transform:translateY(0)}
+.cifra-num{font-family:var(--serif);font-size:3.2rem;font-weight:300;color:var(--ink);line-height:1;margin-bottom:.5rem;letter-spacing:-.02em}
+.cifra-num span{color:var(--accent-lt)}
+.cifra-lbl{font-family:var(--sans);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.5}
+@media(max-width:640px){.cifras-grid{grid-template-columns:repeat(2,1fr)}.cifra-item:nth-child(2){border-right:none}.cifra-item:nth-child(n+3){border-top:0.5px solid var(--parch)}}
 
 /* HISTORIA — split con foto grande */
 .historia{background:var(--ivory);padding:7rem 0}
@@ -356,23 +360,66 @@ footer{background:var(--ink);padding:3rem 0}
   </div>
 </div>
 
-<!-- CREDENCIALES -->
-<div class="cred">
-  <div class="cred-inner">
-    <span class="cred-label">Ha trabajado con</span>
-    <div class="cred-items">
-      <span class="cred-item">Valencia CF</span>
-      <span class="cred-item">·</span>
-      <span class="cred-item">MotoGP</span>
-      <span class="cred-item">·</span>
-      <span class="cred-item">Genius World · David Villa</span>
-      <span class="cred-item">·</span>
-      <span class="cred-item">Audaç Women</span>
-      <span class="cred-item">·</span>
-      <span class="cred-item">Dra. María Pérez</span>
+<!-- CIFRAS DE IMPACTO -->
+<div class="cifras" id="cifras">
+  <div class="cifras-grid">
+    <div class="cifra-item">
+      <div class="cifra-num"><span class="count" data-target="25">0</span>+</div>
+      <div class="cifra-lbl">años en<br>marketing de élite</div>
+    </div>
+    <div class="cifra-item">
+      <div class="cifra-num"><span style="font-size:2rem">1ª</span></div>
+      <div class="cifra-lbl">mujer mánager<br>de pilotos en MotoGP</div>
+    </div>
+    <div class="cifra-item">
+      <div class="cifra-num"><span class="count" data-target="3">0</span></div>
+      <div class="cifra-lbl">proyectos<br>activos hoy</div>
+    </div>
+    <div class="cifra-item">
+      <div class="cifra-num"><span class="count" data-target="2">0</span></div>
+      <div class="cifra-lbl">cursos<br>en activo</div>
     </div>
   </div>
 </div>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.cifra-item');
+  var observed = false;
+  function animateCount(el){
+    var target = parseInt(el.dataset.target);
+    var duration = 1200;
+    var start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target);
+      if(progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+  function reveal(){
+    if(observed) return;
+    var section = document.getElementById('cifras');
+    if(!section) return;
+    var rect = section.getBoundingClientRect();
+    if(rect.top < window.innerHeight * 0.85){
+      observed = true;
+      items.forEach(function(item, i){
+        setTimeout(function(){
+          item.classList.add('visible');
+          var counter = item.querySelector('.count');
+          if(counter) animateCount(counter);
+        }, i * 120);
+      });
+    }
+  }
+  window.addEventListener('scroll', reveal, {passive:true});
+  reveal();
+})();
+</script>
 
 <!-- HISTORIA -->
 <section id="historia" class="historia">
