@@ -33,6 +33,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(254,253,251,
 .nav-links a:hover{color:var(--ink)}
 .nav-cta{color:var(--ink)!important;border:0.5px solid var(--ink)!important;padding:.45rem 1.1rem!important;transition:background .2s,color .2s!important}
 .nav-cta:hover{background:var(--ink)!important;color:var(--warm)!important}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:all .3s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:900px){
+  .nav-burger{display:flex}
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(254,253,251,.98);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--parch);flex-direction:column;gap:0;padding:1rem 0;z-index:199}
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:.85rem 2rem;border-bottom:0.5px solid var(--parch)}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-cta{margin:0!important;border-radius:0!important}
+}
 
 /* HELPERS */
 .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
@@ -265,12 +279,15 @@ footer{background:var(--ink);padding:3rem 0}
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">Julia Calabuig</a>
-    <ul class="nav-links">
+    <button class="nav-burger" id="burger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="#historia">Mi historia</a></li>
       <li><a href="#cursos">Cursos</a></li>
       <li><a href="#impacto">Empresas</a></li>
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#carta">Carta semanal</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#libro">Libro</a></li>
       <li><a href="#contacto" class="nav-cta">Contacto</a></li>
     </ul>
   </div>
@@ -411,7 +428,7 @@ footer{background:var(--ink);padding:3rem 0}
       <video
         controls
         preload="metadata"
-        poster=""
+        poster="encarna-poster.jpg"
         style="width:100%;max-width:660px;display:block;margin:0 auto;border-radius:0;outline:none;background:#000;">
         <source src="encarna-testimonio.mp4" type="video/mp4">
         Tu navegador no soporta la reproducción de vídeo.
@@ -440,12 +457,13 @@ footer{background:var(--ink);padding:3rem 0}
         <h3>Liderazgo y Salud</h3>
         <p class="curso-collab">Con la Dra. María Pérez</p>
         <p class="curso-desc">Una formación presencial para entender la relación entre liderazgo, salud, autodeterminación y calidad de vida. Un día para dejar de vivir al efecto de las circunstancias y recuperar herramientas reales para dirigir tu vida.</p>
-        <div class="curso-mini-form">
-          <input type="text" placeholder="Nombre">
-          <input type="email" placeholder="Email">
-          <input type="tel" placeholder="Teléfono">
-        </div>
-        <a href="#contacto" class="btn btn-dark">Quiero asistir a la próxima edición</a>
+        <form class="curso-mini-form" action="https://formspree.io/f/xvgzyzgb" method="POST">
+          <input type="hidden" name="curso" value="Liderazgo y Salud">
+          <input type="text" name="nombre" placeholder="Nombre" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="telefono" placeholder="Teléfono">
+          <button type="submit" class="btn btn-dark" style="width:100%;text-align:center">Quiero asistir a la próxima edición</button>
+        </form>
       </div>
     </div>
     <!-- Curso 2 -->
@@ -455,12 +473,13 @@ footer{background:var(--ink);padding:3rem 0}
         <h3>Competente en tu vida</h3>
         <p class="curso-collab">Programa empresarial</p>
         <p class="curso-desc">Competencia personal aplicada al rendimiento profesional. Para empresas que quieren fortalecer la claridad, la responsabilidad y la capacidad de acción de sus equipos. No es un curso de motivación. Es una formación práctica sobre responsabilidad, criterio propio y autodeterminismo. Porque cuando una persona se vuelve más competente en su vida, también se vuelve más valiosa en su trabajo.</p>
-        <div class="curso-mini-form">
-          <input type="text" placeholder="Cargo y empresa">
-          <input type="email" placeholder="Email corporativo">
-          <input type="tel" placeholder="Teléfono">
-        </div>
-        <a href="#contacto" class="btn btn-dark">Llevar este programa a mi empresa</a>
+        <form class="curso-mini-form" action="https://formspree.io/f/xvgzyzgb" method="POST">
+          <input type="hidden" name="curso" value="Competente en tu vida">
+          <input type="text" name="cargo_empresa" placeholder="Cargo y empresa" required>
+          <input type="email" name="email" placeholder="Email corporativo" required>
+          <input type="tel" name="telefono" placeholder="Teléfono">
+          <button type="submit" class="btn btn-dark" style="width:100%;text-align:center">Llevar este programa a mi empresa</button>
+        </form>
       </div>
       <div class="curso-img light">
         <div class="curso-img-inner">
@@ -506,6 +525,7 @@ footer{background:var(--ink);padding:3rem 0}
             <option>Todavía no lo sé</option>
           </select>
           <textarea placeholder="Cuéntame brevemente qué tienes en mente"></textarea>
+          <input type="hidden" name="_subject" value="Empresas con Impacto - Nueva consulta">
           <button type="submit" class="btn btn-ghost" style="text-align:center">Enviar propuesta inicial</button>
         </div>
       </div>
@@ -549,7 +569,13 @@ footer{background:var(--ink);padding:3rem 0}
           <input type="text" placeholder="Nombre">
           <input type="email" placeholder="Email">
           <input type="tel" placeholder="Teléfono (opcional)">
-          <a href="#" class="btn btn-dark" style="text-align:center">Quiero recibir la idea semanal</a>
+          <form action="https://formspree.io/f/xvgzyzgb" method="POST" style="display:flex;flex-direction:column;gap:.65rem">
+            <input type="hidden" name="tipo" value="Carta semanal">
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="telefono" placeholder="Teléfono (opcional)">
+            <button type="submit" class="btn btn-dark" style="text-align:center">Quiero recibir la idea semanal</button>
+          </form>
         </div>
       </div>
     </div>
@@ -634,7 +660,7 @@ footer{background:var(--ink);padding:3rem 0}
         <p class="r">Un libro escrito junto a la Dra. María Pérez sobre lo que ocurre cuando la vida se rompe, cuando algo cambia de golpe y tienes que volver a levantarte desde otro lugar.</p>
         <p class="r2">No es un libro escrito desde la teoría. Es un libro nacido de la experiencia, de la pérdida, de la reconstrucción y de la decisión de no rendirse. Para personas que necesitan volver a empezar, pero no quieren hacerlo desde la resignación, sino desde la verdad, la dignidad y la acción.</p>
         <p class="r2" style="font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--mid)">"Cada final trae consigo el poder de un nuevo comienzo."</p>
-        <a href="#contacto" class="btn btn-dark r3">Quiero leer el libro</a>
+        <a href="https://www.casadellibro.com/buscar/libros?q=julia+calabuig+arte+empezar+nuevo" target="_blank" rel="noopener" class="btn btn-dark r3">Quiero leer el libro</a>
       </div>
     </div>
   </div>
@@ -659,7 +685,7 @@ footer{background:var(--ink);padding:3rem 0}
         <p class="contact-closing r3">La vida siempre está delante. La experiencia no es pasado. Es una herramienta para construir lo que viene.</p>
       </div>
       <div class="r">
-        <form class="contact-form" name="contacto" method="POST" data-netlify="true">
+        <form class="contact-form" action="https://formspree.io/f/xvgzyzgb" method="POST">
           <input type="hidden" name="form-name" value="contacto">
           <input type="text" name="nombre" placeholder="Nombre" required>
           <input type="email" name="email" placeholder="Email" required>
@@ -704,6 +730,26 @@ const obs = new IntersectionObserver((entries)=>{
   })
 },{threshold:0.1});
 document.querySelectorAll('.r,.r2,.r3').forEach(el=>obs.observe(el));
+</script>
+
+<script>
+(function(){
+  var burger=document.getElementById('burger');
+  var links=document.getElementById('nav-links');
+  if(!burger||!links) return;
+  burger.addEventListener('click',function(){
+    var open=links.classList.toggle('open');
+    burger.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open);
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      links.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+})();
 </script>
 </body>
 </html>
