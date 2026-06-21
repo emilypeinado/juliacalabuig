@@ -91,14 +91,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(254,253,251,
 .statement-byline{font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
 /* CIFRAS DE IMPACTO */
-.cifras{padding:4rem 2rem;background:var(--ivory);border-top:0.5px solid var(--parch);border-bottom:0.5px solid var(--parch)}
+.cifras{padding:2.25rem 2rem;background:var(--ivory);border-top:0.5px solid var(--parch);border-bottom:0.5px solid var(--parch)}
 .cifras-grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-.cifra-item{text-align:center;padding:2rem 1rem;border-right:0.5px solid var(--parch);opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.cifra-item{text-align:center;padding:1rem 1rem;border-right:0.5px solid var(--parch);opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .cifra-item:last-child{border-right:none}
 .cifra-item.visible{opacity:1;transform:translateY(0)}
-.cifra-num{font-family:var(--serif);font-size:3.2rem;font-weight:300;color:var(--ink);line-height:1;margin-bottom:.5rem;letter-spacing:-.02em}
+.cifra-num{font-family:var(--serif);font-size:2.6rem;font-weight:300;color:var(--ink);line-height:1;margin-bottom:.4rem;letter-spacing:-.02em}
 .cifra-num span{color:var(--accent-lt)}
-.cifra-lbl{font-family:var(--sans);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.5}
+.cifra-lbl{font-family:var(--sans);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.4}
 @media(max-width:640px){.cifras-grid{grid-template-columns:repeat(2,1fr)}.cifra-item:nth-child(2){border-right:none}.cifra-item:nth-child(n+3){border-top:0.5px solid var(--parch)}}
 
 /* HISTORIA — split con foto grande */
@@ -360,7 +360,7 @@ footer{background:var(--ink);padding:4rem 0 3rem}
       <div class="cifra-lbl">años en<br>marketing de élite</div>
     </div>
     <div class="cifra-item">
-      <div class="cifra-num"><span style="font-size:2rem">1ª</span></div>
+      <div class="cifra-num"><span style="font-size:2rem">1<span style="font-size:.55em;vertical-align:.4em">ª</span></span></div>
       <div class="cifra-lbl">mujer mánager<br>de pilotos en MotoGP</div>
     </div>
     <div class="cifra-item">
@@ -377,10 +377,12 @@ footer{background:var(--ink);padding:4rem 0 3rem}
 <script>
 (function(){
   var items = document.querySelectorAll('.cifra-item');
-  var observed = false;
+  var section = document.getElementById('cifras');
+  if(!section || !items.length) return;
+
   function animateCount(el){
     var target = parseInt(el.dataset.target);
-    var duration = 1200;
+    var duration = 1300;
     var start = null;
     function step(ts){
       if(!start) start = ts;
@@ -392,24 +394,30 @@ footer{background:var(--ink);padding:4rem 0 3rem}
     }
     requestAnimationFrame(step);
   }
+
   function reveal(){
-    if(observed) return;
-    var section = document.getElementById('cifras');
-    if(!section) return;
-    var rect = section.getBoundingClientRect();
-    if(rect.top < window.innerHeight * 0.85){
-      observed = true;
-      items.forEach(function(item, i){
-        setTimeout(function(){
-          item.classList.add('visible');
-          var counter = item.querySelector('.count');
-          if(counter) animateCount(counter);
-        }, i * 120);
-      });
-    }
+    items.forEach(function(item, i){
+      setTimeout(function(){
+        item.classList.add('visible');
+        var counter = item.querySelector('.count');
+        if(counter) animateCount(counter);
+      }, i * 140);
+    });
   }
-  window.addEventListener('scroll', reveal, {passive:true});
-  reveal();
+
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          reveal();
+          obs.disconnect();
+        }
+      });
+    }, {threshold: 0.3});
+    obs.observe(section);
+  } else {
+    reveal();
+  }
 })();
 </script>
 
@@ -667,9 +675,6 @@ footer{background:var(--ink);padding:4rem 0 3rem}
         <h3>Recibir la idea semanal</h3>
         <p>Sin spam. Sin motivación vacía. Una idea útil a la semana.</p>
         <div class="light-form">
-          <input type="text" placeholder="Nombre">
-          <input type="email" placeholder="Email">
-          <input type="tel" placeholder="Teléfono (opcional)">
           <form action="https://formspree.io/f/xvgzyzgb" method="POST" style="display:flex;flex-direction:column;gap:.65rem">
             <input type="hidden" name="tipo" value="Carta semanal">
             <input type="text" name="nombre" placeholder="Nombre" required>
