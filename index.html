@@ -75,8 +75,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(254,253,251,
 .hero-sub{font-family:var(--serif);font-size:clamp(1.1rem,1.6vw,1.35rem);font-weight:300;font-style:italic;color:var(--mid);line-height:1.6;margin:1.75rem 0 3rem;max-width:400px}
 .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
 .hero-right{position:relative;background:var(--stone);overflow:hidden;min-height:560px}
-.hero-img-wrap{width:100%;height:100%;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(160deg,var(--stone) 0%,var(--parch) 100%);padding-bottom:3rem}
-.hero-photo-badge{font-family:var(--sans);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:0.5px dashed var(--accent-lt);padding:.6rem 1.2rem;background:rgba(255,255,255,.5)}
+.hero-img-wrap{width:100%;height:100%}
+.hero-photo{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block}
 
 /* TICKER */
 
@@ -105,6 +105,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(254,253,251,
 .historia{background:var(--ivory);padding:7rem 0}
 .historia-grid{display:grid;grid-template-columns:5fr 6fr;gap:5rem;align-items:start}
 .historia-photo-col{position:relative}
+.historia-photo-frame{position:relative;margin-bottom:2.5rem}
+.historia-photo{width:100%;aspect-ratio:1.1;object-fit:cover;display:block}
+.historia-photo-cap{display:block;font-family:var(--sans);font-size:.65rem;letter-spacing:.08em;color:var(--muted);margin-top:.75rem}
 .historia-frame{background:var(--stone);width:100%;aspect-ratio:.75;display:flex;align-items:flex-end;justify-content:flex-start;padding:1.5rem;position:relative}
 .historia-frame::before{content:'';position:absolute;top:-14px;left:-14px;right:14px;bottom:14px;border:0.5px solid var(--accent-lt);z-index:0}
 .historia-frame-badge{position:relative;z-index:1;background:var(--warm);padding:.45rem .9rem;font-family:var(--sans);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
@@ -131,16 +134,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(254,253,251,
 .tl-dot-accent{background:var(--accent);border-color:var(--accent)}
 .tl-title{font-family:var(--serif);font-size:1rem;font-weight:400;color:var(--ink);margin-bottom:.2rem}
 .tl-desc{font-family:var(--sans);font-size:.75rem;color:var(--muted);line-height:1.45}
-/* VIDEO-STYLE SECTION — simulado con poster oscuro */
-.video-section{background:var(--ink);padding:6rem 0;position:relative;overflow:hidden}
-.video-section::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 80px,rgba(255,255,255,.012) 80px,rgba(255,255,255,.012) 81px)}
-.video-inner{max-width:800px;margin:0 auto;text-align:center;padding:0 2rem;position:relative;z-index:1}
-.video-eyebrow{font-family:var(--sans);font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.5rem;display:block}
-.video-h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3.2rem);font-weight:300;line-height:1.25;color:rgba(255,255,255,.9);margin-bottom:1.5rem}
-.video-sub{font-family:var(--sans);font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.8;max-width:560px;margin:0 auto 3rem}
-.video-real{width:100%;max-width:660px;margin:0 auto 2.5rem;border:0.5px solid rgba(255,255,255,.12);}
-.video-real video{display:block;}
-.video-caption{font-family:var(--sans);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+/* CARRUSEL DE TESTIMONIOS */
+.car-wrap{position:relative;padding:0 3rem}
+.car-track{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:.5rem .25rem 1.5rem;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.car-track::-webkit-scrollbar{display:none}
+.car-slide{flex:0 0 auto;width:340px;scroll-snap-align:start;background:var(--warm);border:0.5px solid var(--parch);padding:2.25rem 2rem;display:flex;flex-direction:column}
+.car-media-box{width:100%;aspect-ratio:1;margin-bottom:1.5rem;background:var(--stone);overflow:hidden}
+.car-media-box img,.car-media-box video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.car-media-pending{display:flex;align-items:center;justify-content:center;border:0.5px dashed var(--accent-lt)}
+.car-media-pending span{font-family:var(--sans);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.car-text{justify-content:center;text-align:center;background:var(--ivory)}
+.car-q{font-family:var(--serif);font-size:.95rem;font-style:italic;line-height:1.65;color:var(--ink);margin-bottom:1.25rem;flex:1}
+.car-q-lg{font-size:1.15rem}
+.car-name{font-family:var(--sans);font-size:.78rem;font-weight:500;color:var(--ink);letter-spacing:.03em;margin-bottom:.1rem}
+.car-role{font-family:var(--sans);font-size:.68rem;color:var(--muted)}
+.car-arrow{position:absolute;top:42%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0.5px solid var(--ink);background:var(--warm);color:var(--ink);font-size:1.1rem;cursor:pointer;z-index:2;transition:background .2s,color .2s}
+.car-arrow:hover{background:var(--ink);color:var(--warm)}
+.car-prev{left:0}
+.car-next{right:0}
+.car-dots{display:flex;justify-content:center;gap:.5rem;margin-top:.5rem}
+.car-dot{width:6px;height:6px;border-radius:50%;background:var(--parch);border:none;padding:0;cursor:pointer;transition:background .2s}
+.car-dot.active{background:var(--accent)}
 
 /* CURSOS — layout alternante como Marie */
 .cursos{background:var(--warm);padding:7rem 0}
@@ -231,17 +245,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(254,253,251,
 .test-header{margin-bottom:4rem}
 .test-header h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.15;color:var(--ink)}
 .test-header p{font-size:.9rem;color:var(--mid);margin-top:.75rem;max-width:480px}
-.test-featured{background:var(--ink);padding:4rem;margin-bottom:2px;display:grid;grid-template-columns:1fr 3.2fr;gap:2rem;align-items:center}
-.test-avatar{width:150px;height:150px;background:rgba(255,255,255,.07);border:0.5px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2rem;color:rgba(255,255,255,.35);flex-shrink:0;overflow:hidden;border-radius:50%}
-.test-featured-q{font-family:var(--serif);font-size:1.25rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.75);line-height:1.65;margin-bottom:1.5rem}
-.test-name{font-family:var(--sans);font-size:.8rem;font-weight:500;color:rgba(255,255,255,.6);letter-spacing:.04em;margin-bottom:.15rem}
-.test-role{font-family:var(--sans);font-size:.72rem;color:rgba(255,255,255,.3)}
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--parch)}
-.test-card{background:var(--ivory);padding:2.5rem 2rem}
-.test-q{font-family:var(--serif);font-size:.97rem;font-style:italic;line-height:1.7;color:var(--ink);margin-bottom:1.5rem}
-.test-auth{font-family:var(--sans);font-size:.76rem;font-weight:500;color:var(--ink);margin-bottom:.1rem}
-.test-rl{font-family:var(--sans);font-size:.7rem;color:var(--muted)}
-.blq-label{font-family:var(--sans);font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:3.5rem 0 1.75rem}
 
 /* LIBRO */
 .libro{background:var(--warm);padding:7rem 0}
@@ -292,16 +295,35 @@ footer{background:var(--ink);padding:4rem 0 3rem}
 @media(max-width:900px){.footer-inner{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-contact{align-items:center}}
 
 /* RESPONSIVE */
+/* Tablet / iPad — capa intermedia entre móvil y notebook para que ambos
+   dispositivos se vean consistentes: mantiene la maqueta a 2 columnas
+   pero reduce paddings y gaps pensados para pantallas >1280px */
+@media(min-width:901px) and (max-width:1180px){
+  .container{padding:0 1.5rem}
+  .hero-left{padding:4rem 2rem 4rem 1.5rem}
+  .historia-grid{gap:3rem}
+  .impacto-grid,.carta-grid{gap:3rem}
+  .libro-grid{gap:3rem}
+  .curso-content{padding:3rem 2rem}
+  .car-slide{width:300px}
+}
+
 @media(max-width:900px){
   .hero{grid-template-columns:1fr}
   .hero-right{min-height:320px}
   .hero-left{max-width:100%;margin:0;padding:4rem 1.5rem 3rem}
   .historia-grid,.impacto-grid,.carta-grid,.libro-grid,.contact-grid{grid-template-columns:1fr;gap:3rem}
   .curso-row{grid-template-columns:1fr}
-  .proy-grid,.test-grid{grid-template-columns:1fr}
-  .test-featured{grid-template-columns:1fr;text-align:center}
-  .test-avatar{margin:0 auto 1.5rem}
+  .proy-grid{grid-template-columns:1fr}
   .historia-pull{position:static;margin-top:1.5rem;width:auto}
+  .car-wrap{padding:0 2.5rem}
+  .car-slide{width:82vw;max-width:340px}
+  .car-arrow{width:38px;height:38px;font-size:1rem}
+}
+
+@media(max-width:520px){
+  .car-wrap{padding:0}
+  .car-arrow{display:none}
 }
 </style>
 </head>
@@ -338,7 +360,7 @@ footer{background:var(--ink);padding:4rem 0 3rem}
   </div>
   <div class="hero-right">
     <div class="hero-img-wrap">
-      <span class="hero-photo-badge">Foto real de Julia · próximamente</span>
+      <img src="imagenes/julia-hero.jpg" alt="Julia Calabuig" class="hero-photo">
     </div>
   </div>
 </section>
@@ -426,6 +448,10 @@ footer{background:var(--ink);padding:4rem 0 3rem}
   <div class="container">
     <div class="historia-grid">
       <div class="historia-photo-col r">
+        <div class="historia-photo-frame">
+          <img src="imagenes/motogp.jpg" alt="Julia Calabuig en el paddock de MotoGP" class="historia-photo">
+          <span class="historia-photo-cap">Paddock MotoGP · primera mujer mánager de pilotos</span>
+        </div>
         <div class="timeline">
           <div class="tl-item">
             <div class="tl-year">1999</div>
@@ -500,26 +526,6 @@ footer{background:var(--ink);padding:4rem 0 3rem}
     </div>
   </div>
 </section>
-
-<!-- VIDEO-STYLE BREAK -->
-<div class="video-section">
-  <div class="video-inner">
-    <span class="video-eyebrow r">Sobre el trabajo de Julia</span>
-    <h2 class="video-h2 r">Lo que han visto quienes<br>han trabajado con ella</h2>
-    <p class="video-sub r2">En mis cursos no busco impresionar durante unas horas. Busco que las personas salgan con las cosas más claras, más determinación y herramientas que puedan aplicar en su vida real.</p>
-    <div class="video-real r2">
-      <video
-        controls
-        preload="metadata"
-        poster="encarna-poster.jpg"
-        style="width:100%;max-width:660px;display:block;margin:0 auto;border-radius:0;outline:none;background:#000;">
-        <source src="encarna-testimonio.mp4" type="video/mp4">
-        Tu navegador no soporta la reproducción de vídeo.
-      </video>
-    </div>
-    <p class="video-caption r3">Encarna · testimonio real</p>
-  </div>
-</div>
 
 <!-- CURSOS -->
 <section id="cursos" class="cursos">
@@ -698,49 +704,75 @@ footer{background:var(--ink);padding:4rem 0 3rem}
       <p>Habla de lo que otros han visto — en los cursos y en los proyectos reales.</p>
     </div>
 
-    <!-- BLOQUE 1: CURSOS -->
-    <p class="blq-label r">Después de vivir la experiencia</p>
+    <div class="car-wrap r2">
+      <button class="car-arrow car-prev" aria-label="Anterior" type="button">&larr;</button>
+      <button class="car-arrow car-next" aria-label="Siguiente" type="button">&rarr;</button>
 
-    <!-- Featured largo: Carlos -->
-    <div class="test-featured r">
-      <div class="test-avatar">CC</div>
-      <div>
-        <p class="test-featured-q">"En octubre de 2025 asistí al curso de Liderazgo y Salud y allí conocí a Julia Calabuig. Por aquel entonces tenía un lío gordo en la empresa y sin saber nada de mí ni de la empresa me soltó: ¿y si no la vendes? Julia es una fuerza de la naturaleza, ese tipo de personas líder, inspiradora, apasionada y apasionante. La escuchas y te da la fuerza del león. Si tienes un problema y quieres que todo siga igual, mejor no la conozcas."</p>
-        <p class="test-name">Carlos Claramunt</p>
-        <p class="test-role">Empresario · Alumni Liderazgo y Salud 2025</p>
-      </div>
-    </div>
+      <div class="car-track" id="carTrack">
 
-    <!-- Grid 3 tarjetas: alumnos curso -->
-    <div class="test-grid">
-      <div class="test-card r">
-        <p class="test-q">"Estos principios nos ayudan a estar en el presente y conectar con nuestro propósito. Tomar responsabilidad por nuestros actos y a ponernos en causa para no ser efecto de nada ni de nadie. Una sale con más fuerza, consciencia y energía."</p>
-        <p class="test-auth">Cyntia Gerlinger</p>
-        <p class="test-rl">Entrepreneur &amp; Networker</p>
-      </div>
-      <div class="test-card r">
-        <p class="test-q">"Me voy con una sensación muy especial de aprendizaje, refuerzo de lo aprendido y, sobre todo, sé que he de seguir despierto y observando. Gracias por vuestro regalo de vida."</p>
-        <p class="test-auth">Fernando Gallo</p>
-        <p class="test-rl">Participante</p>
-      </div>
-      <div class="test-card r">
-        <p class="test-q">"La perseverancia, la grandeza y la fuerza de voluntad para no negociar contigo misma. Gracias por darme las herramientas para esta consciencia hacia el liderazgo."</p>
-        <p class="test-auth">Blanca Rodés</p>
-        <p class="test-rl">Participante</p>
-      </div>
-    </div>
+        <!-- Vídeo: Encarna -->
+        <div class="car-slide car-media">
+          <div class="car-media-box">
+            <video controls preload="metadata" poster="encarna-poster.jpg">
+              <source src="encarna-testimonio.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="car-q">"Un espacio real donde salir con más claridad y determinación para aplicar en la vida diaria."</p>
+          <p class="car-name">Encarna</p>
+          <p class="car-role">Testimonio en vídeo · Alumni</p>
+        </div>
 
-    <!-- BLOQUE 2: PROYECTOS REALES -->
-    <p class="blq-label r" style="margin-top:4rem">En proyectos reales</p>
+        <!-- Vídeo: pendiente de subir -->
+        <div class="car-slide car-media car-pending">
+          <div class="car-media-box car-media-pending">
+            <span>Vídeo en camino</span>
+          </div>
+          <p class="car-q">Nuevo testimonio en vídeo — se añadirá en cuanto Emi reciba el archivo.</p>
+          <p class="car-name">Próximamente</p>
+          <p class="car-role">Alumni Liderazgo y Salud</p>
+        </div>
 
-    <!-- Featured largo: Jodi -->
-    <div class="test-featured r">
-      <div class="test-avatar"><img src="jordi-bruixola.jpg" alt="Jodi Bruixola" style="width:100%;height:100%;object-fit:cover;border-radius:inherit"></div>
-      <div>
-        <p class="test-featured-q">"Su calidad humana, su liderazgo natural y su capacidad para conectar con las personas marcan la diferencia. Sabe motivar, generar compromiso y crear entornos que llevan al éxito. Una profesional brillante, pionera en muchas facetas de la vida."</p>
-        <p class="test-name">Jodi Bruixola</p>
-        <p class="test-role">30 años en clubes de primer nivel · Presidente del CF Benidorm · Agente FIFA</p>
+        <!-- Foto: Jordi -->
+        <div class="car-slide car-media">
+          <div class="car-media-box">
+            <img src="jordi-bruixola.jpg" alt="Jordi Bruixola">
+          </div>
+          <p class="car-q">"Su calidad humana, su liderazgo natural y su capacidad para conectar con las personas marcan la diferencia. Sabe motivar, generar compromiso y crear entornos que llevan al éxito."</p>
+          <p class="car-name">Jordi Bruixola</p>
+          <p class="car-role">30 años en clubes de primer nivel · Presidente del CF Benidorm · Agente FIFA</p>
+        </div>
+
+        <!-- Sin foto: Carlos -->
+        <div class="car-slide car-text">
+          <p class="car-q car-q-lg">"Tenía un lío gordo en la empresa y, sin saber nada de mí ni de la empresa, me soltó: ¿y si no la vendes? Julia es una fuerza de la naturaleza. La escuchas y te da la fuerza del león."</p>
+          <p class="car-name">Carlos Claramunt</p>
+          <p class="car-role">Empresario · Alumni Liderazgo y Salud 2025</p>
+        </div>
+
+        <!-- Sin foto: Cyntia -->
+        <div class="car-slide car-text">
+          <p class="car-q car-q-lg">"Estos principios nos ayudan a estar en el presente y conectar con nuestro propósito, y a ponernos en causa para no ser efecto de nada ni de nadie. Una sale con más fuerza, consciencia y energía."</p>
+          <p class="car-name">Cyntia Gerlinger</p>
+          <p class="car-role">Entrepreneur &amp; Networker</p>
+        </div>
+
+        <!-- Sin foto: Fernando -->
+        <div class="car-slide car-text">
+          <p class="car-q car-q-lg">"Me voy con una sensación muy especial de aprendizaje, refuerzo de lo aprendido y, sobre todo, sé que he de seguir despierto y observando."</p>
+          <p class="car-name">Fernando Gallo</p>
+          <p class="car-role">Participante</p>
+        </div>
+
+        <!-- Sin foto: Blanca -->
+        <div class="car-slide car-text">
+          <p class="car-q car-q-lg">"La perseverancia, la grandeza y la fuerza de voluntad para no negociar contigo misma. Gracias por darme las herramientas para esta consciencia hacia el liderazgo."</p>
+          <p class="car-name">Blanca Rodés</p>
+          <p class="car-role">Participante</p>
+        </div>
+
       </div>
+
+      <div class="car-dots" id="carDots"></div>
     </div>
 
     <div style="text-align:center;margin-top:3.5rem" class="r">
@@ -863,6 +895,44 @@ document.querySelectorAll('.r,.r2,.r3').forEach(el=>obs.observe(el));
       burger.setAttribute('aria-expanded','false');
     });
   });
+})();
+</script>
+
+<script>
+(function(){
+  var track=document.getElementById('carTrack');
+  var dotsWrap=document.getElementById('carDots');
+  if(!track||!dotsWrap) return;
+  var slides=Array.prototype.slice.call(track.children);
+
+  slides.forEach(function(_,i){
+    var dot=document.createElement('button');
+    dot.className='car-dot'+(i===0?' active':'');
+    dot.setAttribute('aria-label','Ir al testimonio '+(i+1));
+    dot.addEventListener('click',function(){
+      slides[i].scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'});
+    });
+    dotsWrap.appendChild(dot);
+  });
+  var dots=Array.prototype.slice.call(dotsWrap.children);
+
+  document.querySelector('.car-prev').addEventListener('click',function(){
+    track.scrollBy({left:-(slides[0].offsetWidth+24),behavior:'smooth'});
+  });
+  document.querySelector('.car-next').addEventListener('click',function(){
+    track.scrollBy({left:slides[0].offsetWidth+24,behavior:'smooth'});
+  });
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var idx=slides.indexOf(entry.target);
+      if(entry.isIntersecting && idx>-1){
+        dots.forEach(function(d){d.classList.remove('active')});
+        dots[idx].classList.add('active');
+      }
+    });
+  },{root:track,threshold:0.6});
+  slides.forEach(function(s){io.observe(s)});
 })();
 </script>
 </body>
