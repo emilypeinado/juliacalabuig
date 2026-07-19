@@ -242,6 +242,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(254,253,251,
 
 /* TESTIMONIO — alternante, gran tipografía */
 .testimonios{background:var(--ivory);padding:7rem 0}
+.car-group-label{font-family:var(--serif);font-size:1.35rem;font-weight:300;font-style:italic;color:var(--ink);text-align:center;margin:0 0 1.75rem}
+.car-group{margin-bottom:4.5rem}
+.car-group:last-of-type{margin-bottom:0}
 .test-header{margin-bottom:4rem}
 .test-header h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.15;color:var(--ink)}
 .test-header p{font-size:.9rem;color:var(--mid);margin-top:.75rem;max-width:480px}
@@ -703,75 +706,108 @@ footer{background:var(--ink);padding:4rem 0 3rem}
       <p>Habla de lo que otros han visto — en los cursos y en los proyectos reales.</p>
     </div>
 
-    <div class="car-wrap r2">
-      <button class="car-arrow car-prev" aria-label="Anterior" type="button">&larr;</button>
-      <button class="car-arrow car-next" aria-label="Siguiente" type="button">&rarr;</button>
+    <!-- Bloque 1: Testimonios en vídeo -->
+    <div class="car-group r2">
+      <p class="car-group-label">Testimonios en vídeo</p>
+      <div class="car-wrap">
+        <button class="car-arrow car-prev" id="carVideoPrev" aria-label="Anterior" type="button">&larr;</button>
+        <button class="car-arrow car-next" id="carVideoNext" aria-label="Siguiente" type="button">&rarr;</button>
 
-      <div class="car-track" id="carTrack">
+        <div class="car-track" id="carVideoTrack">
 
-        <!-- Vídeo: Encarna -->
-        <div class="car-slide car-media">
-          <div class="car-media-box">
-            <video controls preload="metadata" poster="encarna-poster.jpg">
-              <source src="encarna-testimonio.mp4" type="video/mp4">
-            </video>
+          <!-- Vídeo: Encarna -->
+          <div class="car-slide car-media">
+            <div class="car-media-box">
+              <video controls preload="metadata" poster="encarna-poster.jpg">
+                <source src="encarna-testimonio.mp4" type="video/mp4">
+              </video>
+            </div>
+            <p class="car-q">"Un espacio real donde salir con más claridad y determinación para aplicar en la vida diaria."</p>
+            <p class="car-name">Encarna</p>
+            <p class="car-role">Testimonio en vídeo · Alumni</p>
           </div>
-          <p class="car-q">"Un espacio real donde salir con más claridad y determinación para aplicar en la vida diaria."</p>
-          <p class="car-name">Encarna</p>
-          <p class="car-role">Testimonio en vídeo · Alumni</p>
-        </div>
 
-        <!-- Vídeo: pendiente de subir -->
-        <div class="car-slide car-media car-pending">
-          <div class="car-media-box car-media-pending">
-            <span>Vídeo en camino</span>
+          <!-- Vídeo: pendiente de subir -->
+          <div class="car-slide car-media car-pending">
+            <div class="car-media-box car-media-pending">
+              <span>Vídeo en camino</span>
+            </div>
+            <p class="car-q">Nuevo testimonio en vídeo — se añadirá en cuanto Emi reciba el archivo.</p>
+            <p class="car-name">Próximamente</p>
+            <p class="car-role">Alumni Liderazgo y Salud</p>
           </div>
-          <p class="car-q">Nuevo testimonio en vídeo — se añadirá en cuanto Emi reciba el archivo.</p>
-          <p class="car-name">Próximamente</p>
-          <p class="car-role">Alumni Liderazgo y Salud</p>
+
         </div>
 
-        <!-- Foto: Jordi -->
-        <div class="car-slide car-media">
-          <div class="car-media-box">
-            <img src="jordi-bruixola.jpg" alt="Jordi Bruixola">
-          </div>
-          <p class="car-q">"Su calidad humana, su liderazgo natural y su capacidad para conectar con las personas marcan la diferencia. Sabe motivar, generar compromiso y crear entornos que llevan al éxito."</p>
-          <p class="car-name">Jordi Bruixola</p>
-          <p class="car-role">30 años en clubes de primer nivel · Presidente del CF Benidorm · Agente FIFA</p>
-        </div>
-
-        <!-- Sin foto: Carlos -->
-        <div class="car-slide car-text">
-          <p class="car-q car-q-lg">"Tenía un lío gordo en la empresa y, sin saber nada de mí ni de la empresa, me soltó: ¿y si no la vendes? Julia es una fuerza de la naturaleza. La escuchas y te da la fuerza del león."</p>
-          <p class="car-name">Carlos Claramunt</p>
-          <p class="car-role">Empresario · Alumni Liderazgo y Salud 2025</p>
-        </div>
-
-        <!-- Sin foto: Cyntia -->
-        <div class="car-slide car-text">
-          <p class="car-q car-q-lg">"Estos principios nos ayudan a estar en el presente y conectar con nuestro propósito, y a ponernos en causa para no ser efecto de nada ni de nadie. Una sale con más fuerza, consciencia y energía."</p>
-          <p class="car-name">Cyntia Gerlinger</p>
-          <p class="car-role">Entrepreneur &amp; Networker</p>
-        </div>
-
-        <!-- Sin foto: Fernando -->
-        <div class="car-slide car-text">
-          <p class="car-q car-q-lg">"Me voy con una sensación muy especial de aprendizaje, refuerzo de lo aprendido y, sobre todo, sé que he de seguir despierto y observando."</p>
-          <p class="car-name">Fernando Gallo</p>
-          <p class="car-role">Participante</p>
-        </div>
-
-        <!-- Sin foto: Blanca -->
-        <div class="car-slide car-text">
-          <p class="car-q car-q-lg">"La perseverancia, la grandeza y la fuerza de voluntad para no negociar contigo misma. Gracias por darme las herramientas para esta consciencia hacia el liderazgo."</p>
-          <p class="car-name">Blanca Rodés</p>
-          <p class="car-role">Participante</p>
-        </div>
-
+        <div class="car-dots" id="carVideoDots"></div>
       </div>
+    </div>
 
-      <div class="car-dots" id="carDots"></div>
+    <!-- Bloque 2: Testimonios en texto -->
+    <div class="car-group r2">
+      <p class="car-group-label">Testimonios en texto</p>
+      <div class="car-wrap">
+        <button class="car-arrow car-prev" id="carTextPrev" aria-label="Anterior" type="button">&larr;</button>
+        <button class="car-arrow car-next" id="carTextNext" aria-label="Siguiente" type="button">&rarr;</button>
+
+        <div class="car-track" id="carTextTrack">
+
+          <!-- Foto: Jordi -->
+          <div class="car-slide car-media">
+            <div class="car-media-box">
+              <img src="jordi-bruixola.jpg" alt="Jordi Bruixola">
+            </div>
+            <p class="car-q">"Su calidad humana, su liderazgo natural y su capacidad para conectar con las personas marcan la diferencia. Sabe motivar, generar compromiso y crear entornos que llevan al éxito."</p>
+            <p class="car-name">Jordi Bruixola</p>
+            <p class="car-role">30 años en clubes de primer nivel · Presidente del CF Benidorm · Agente FIFA</p>
+          </div>
+
+          <!-- Sin foto: Toni Elías -->
+          <div class="car-slide car-text">
+            <p class="car-q car-q-lg">"Julia trabajó conmigo en una etapa complicada de mi carrera. Siempre me recordó que los resultados en la pista también dependen de hacer las cosas bien fuera de ella: vivir con disciplina, responsabilidad y liderazgo. Más que una mánager, fue una persona que supo ayudarme a recuperar una parte importante de mí mismo."</p>
+            <p class="car-name">Toni Elías</p>
+            <p class="car-role">Piloto de motociclismo</p>
+          </div>
+
+          <!-- Sin foto: Carlos -->
+          <div class="car-slide car-text">
+            <p class="car-q car-q-lg">"Tenía un lío gordo en la empresa y, sin saber nada de mí ni de la empresa, me soltó: ¿y si no la vendes? Julia es una fuerza de la naturaleza. La escuchas y te da la fuerza del león."</p>
+            <p class="car-name">Carlos Claramunt</p>
+            <p class="car-role">Empresario · Alumni Liderazgo y Salud 2025</p>
+          </div>
+
+          <!-- Sin foto: Paola Cazenave -->
+          <div class="car-slide car-text">
+            <p class="car-q car-q-lg">"Lo que más valoro de Julia es su capacidad para combinar estrategia, liderazgo y desarrollo personal de una forma muy natural. Te ayuda a ordenar ideas, ganar perspectiva y avanzar con determinación hacia tus objetivos."</p>
+            <p class="car-name">Paola Cazenave</p>
+            <p class="car-role">Empresaria</p>
+          </div>
+
+          <!-- Sin foto: Cyntia -->
+          <div class="car-slide car-text">
+            <p class="car-q car-q-lg">"Estos principios nos ayudan a estar en el presente y conectar con nuestro propósito, y a ponernos en causa para no ser efecto de nada ni de nadie. Una sale con más fuerza, consciencia y energía."</p>
+            <p class="car-name">Cyntia Gerlinger</p>
+            <p class="car-role">Entrepreneur &amp; Networker</p>
+          </div>
+
+          <!-- Sin foto: Fernando -->
+          <div class="car-slide car-text">
+            <p class="car-q car-q-lg">"Me voy con una sensación muy especial de aprendizaje, refuerzo de lo aprendido y, sobre todo, sé que he de seguir despierto y observando."</p>
+            <p class="car-name">Fernando Gallo</p>
+            <p class="car-role">Participante</p>
+          </div>
+
+          <!-- Sin foto: Blanca -->
+          <div class="car-slide car-text">
+            <p class="car-q car-q-lg">"La perseverancia, la grandeza y la fuerza de voluntad para no negociar contigo misma. Gracias por darme las herramientas para esta consciencia hacia el liderazgo."</p>
+            <p class="car-name">Blanca Rodés</p>
+            <p class="car-role">Participante</p>
+          </div>
+
+        </div>
+
+        <div class="car-dots" id="carTextDots"></div>
+      </div>
     </div>
 
     <div style="text-align:center;margin-top:3.5rem" class="r">
@@ -899,39 +935,46 @@ document.querySelectorAll('.r,.r2,.r3').forEach(el=>obs.observe(el));
 
 <script>
 (function(){
-  var track=document.getElementById('carTrack');
-  var dotsWrap=document.getElementById('carDots');
-  if(!track||!dotsWrap) return;
-  var slides=Array.prototype.slice.call(track.children);
+  function initCarousel(trackId,dotsId,prevId,nextId){
+    var track=document.getElementById(trackId);
+    var dotsWrap=document.getElementById(dotsId);
+    var prevBtn=document.getElementById(prevId);
+    var nextBtn=document.getElementById(nextId);
+    if(!track||!dotsWrap) return;
+    var slides=Array.prototype.slice.call(track.children);
 
-  slides.forEach(function(_,i){
-    var dot=document.createElement('button');
-    dot.className='car-dot'+(i===0?' active':'');
-    dot.setAttribute('aria-label','Ir al testimonio '+(i+1));
-    dot.addEventListener('click',function(){
-      slides[i].scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'});
+    slides.forEach(function(_,i){
+      var dot=document.createElement('button');
+      dot.className='car-dot'+(i===0?' active':'');
+      dot.setAttribute('aria-label','Ir al testimonio '+(i+1));
+      dot.addEventListener('click',function(){
+        slides[i].scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'});
+      });
+      dotsWrap.appendChild(dot);
     });
-    dotsWrap.appendChild(dot);
-  });
-  var dots=Array.prototype.slice.call(dotsWrap.children);
+    var dots=Array.prototype.slice.call(dotsWrap.children);
 
-  document.querySelector('.car-prev').addEventListener('click',function(){
-    track.scrollBy({left:-(slides[0].offsetWidth+24),behavior:'smooth'});
-  });
-  document.querySelector('.car-next').addEventListener('click',function(){
-    track.scrollBy({left:slides[0].offsetWidth+24,behavior:'smooth'});
-  });
-
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      var idx=slides.indexOf(entry.target);
-      if(entry.isIntersecting && idx>-1){
-        dots.forEach(function(d){d.classList.remove('active')});
-        dots[idx].classList.add('active');
-      }
+    if(prevBtn) prevBtn.addEventListener('click',function(){
+      track.scrollBy({left:-(slides[0].offsetWidth+24),behavior:'smooth'});
     });
-  },{root:track,threshold:0.6});
-  slides.forEach(function(s){io.observe(s)});
+    if(nextBtn) nextBtn.addEventListener('click',function(){
+      track.scrollBy({left:slides[0].offsetWidth+24,behavior:'smooth'});
+    });
+
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var idx=slides.indexOf(entry.target);
+        if(entry.isIntersecting && idx>-1){
+          dots.forEach(function(d){d.classList.remove('active')});
+          dots[idx].classList.add('active');
+        }
+      });
+    },{root:track,threshold:0.6});
+    slides.forEach(function(s){io.observe(s)});
+  }
+
+  initCarousel('carVideoTrack','carVideoDots','carVideoPrev','carVideoNext');
+  initCarousel('carTextTrack','carTextDots','carTextPrev','carTextNext');
 })();
 </script>
 </body>
