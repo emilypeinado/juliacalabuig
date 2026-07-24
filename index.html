@@ -184,6 +184,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(254,253,251,
 .curso-img-sub{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.5rem;margin-bottom:1.25rem}
 .curso-img.light .curso-img-sub{color:var(--muted)}
 .curso-img-pills{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center}
+.curso-img-photo{padding:0;align-items:flex-end}
+.curso-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.curso-img-overlay{position:relative;z-index:1;padding:3rem 2rem;text-align:center;width:100%;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 100%)}
+.curso-img-overlay-light{background:linear-gradient(0deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.55) 70%,rgba(255,255,255,0) 100%)}
+.curso-img.dark .curso-img-overlay .curso-img-title{color:#fff}
+.curso-img.dark .curso-img-overlay .curso-img-sub{color:rgba(255,255,255,.75)}
 .curso-pill{font-family:var(--sans);font-size:.62rem;letter-spacing:.06em;color:rgba(255,255,255,.5);border:0.5px solid rgba(255,255,255,.2);padding:.22rem .65rem;border-radius:20px}
 .curso-pill-dark{color:var(--mid);border-color:var(--parch)}
 /* IMPACTO */
@@ -535,15 +541,9 @@ footer{background:var(--ink);padding:4rem 0 3rem}
     </div>
     <!-- Curso 1 -->
     <div class="curso-row">
-      <div class="curso-img dark">
-        <div class="curso-img-inner">
-          <div class="curso-icon-wrap">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="24" cy="18" r="8" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
-              <path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M24 10v16M18 22l6 6 6-6" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
+      <div class="curso-img dark curso-img-photo">
+        <img src="imagenes/julia-charla.jpg" alt="Julia Calabuig en una charla" class="curso-photo">
+        <div class="curso-img-overlay">
           <div class="curso-img-title">Liderazgo<br>y Salud</div>
           <div class="curso-img-sub">Con la Dra. María Pérez · Presencial</div>
           <div class="curso-img-pills">
@@ -582,15 +582,9 @@ footer{background:var(--ink);padding:4rem 0 3rem}
           <button type="submit" class="btn btn-dark" style="width:100%;text-align:center">Llevar este programa a mi empresa</button>
         </form>
       </div>
-      <div class="curso-img light">
-        <div class="curso-img-inner">
-          <div class="curso-icon-wrap">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="8" y="14" width="32" height="22" rx="2" stroke="var(--ink)" stroke-width="1.5" stroke-opacity=".5"/>
-              <path d="M16 14V12a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2" stroke="var(--ink)" stroke-width="1.5" stroke-opacity=".5"/>
-              <path d="M20 25l3 3 6-6" stroke="var(--ink)" stroke-width="1.5" stroke-opacity=".5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
+      <div class="curso-img light curso-img-photo">
+        <img src="imagenes/julia-empresas.jpg" alt="Julia Calabuig" class="curso-photo">
+        <div class="curso-img-overlay curso-img-overlay-light">
           <div class="curso-img-title">Competente<br>en tu vida</div>
           <div class="curso-img-sub">Programa para empresas</div>
           <div class="curso-img-pills">
