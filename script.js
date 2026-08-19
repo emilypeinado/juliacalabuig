@@ -1,1 +1,0 @@
-// Scripts globales del proyecto
